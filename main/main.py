@@ -7,9 +7,8 @@ batch_size = 32
 epochs = 100
 train_data_dir = "O:\RADON\Train"
 validation_data_dir = "O:\RADON\Validation"
-test_data_dir ="O:\RADON\Test"
+test_data_dir ="O:\RADON\Test
 
-# Custom class mapping for 16 cases
 class_mapping = {
     0: ('Generic', 'Healthy'),
     1: ('Generic', 'Powdery'),
@@ -96,10 +95,8 @@ history = model.fit(
 test_loss, test_acc = model.evaluate(test_generator, steps=test_generator.samples // batch_size)
 print(f'Test accuracy: {test_acc}')
 
-# Save the model
 model.save('plant_disease_model.h5')
 
-# Example of how to use the class mapping
 predictions = model.predict(test_generator, steps=test_generator.samples // batch_size)
 for i, prediction in enumerate(predictions):
     predicted_class = tf.argmax(prediction).numpy()
