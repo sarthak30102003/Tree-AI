@@ -24,10 +24,7 @@ class win:
 #################################################################################
 ########################       MODEL          ######################################
          
-         # Load the trained model
-        model = load_model('plant_disease_model.h5')  # Update with your model file path
-
-        # Define the class mapping dictionary
+        model = load_model('plant_disease_model.h5')
         class_mapping = {
             0: ('Generic', 'Healthy'),
             1: ('Generic', 'Powdery'),
@@ -46,69 +43,53 @@ class win:
             14: ('Wheat', 'Healthy'),
             15: ('Wheat', 'Yellow Rust'),
         }
-
-        # Specify the folder containing images for classification
         input_folder = "Test"
         
-        # Create a canvas with a scrollbar
         canvas = Canvas(win, width=570, height=500, bg="#242424")
         scroll_y = Scrollbar(win, orient="vertical", command=canvas.yview, bg="#242424")
         scroll_y.pack(side="right", fill="y")
-        # canvas.place(x=230,y=0)
         canvas.configure(yscrollcommand=scroll_y.set)
         
-        # Create a frame inside the canvas to hold the images and labels
         frame = Frame(canvas, bg="#242424")
         canvas.create_window((0, 0), window=frame, anchor="nw")
 
-        # Get a list of all image files in the folder
         image_files = [f for f in os.listdir(input_folder) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
         
-        # Function to update the canvas with images and labels
         def update_images():
             for i, image_file in enumerate(image_files):
-                # Read and preprocess the image
                 image_path = os.path.join(input_folder, image_file)
                 img = cv2.imread(image_path)
-                img = cv2.resize(img, (256, 256))  # Ensure the image size matches the model input size
+                img = cv2.resize(img, (256, 256))
                 img_display = img.copy()
-                img = img / 255.0  # Normalize pixel values
+                img = img / 255.0 
 
-                # Expand dimensions to match the model input shape
                 img = np.expand_dims(img, axis=0)
 
-                # Make prediction
                 prediction = model.predict(img)
                 predicted_class = np.argmax(prediction)
 
-                # Use the class_mapping dictionary to get species and disease names
                 species, disease = class_mapping[predicted_class]
 
-                # Display the image with predicted class information
                 img_rgb = cv2.cvtColor(img_display, cv2.COLOR_BGR2RGB)
                 img_pil = Image.fromarray(img_rgb)
                 img_tk = ImageTk.PhotoImage(img_pil)
 
-                # Create a frame for each image and label
                 frame_image_label = Frame(frame, bd=2, relief="groove", bg="#242424")
                 frame_image_label.grid(row=i, column=0, sticky="w", pady=5)
 
                 label_image = Label(frame_image_label, image=img_tk, bg="#242424")
                 label_image.grid(row=0, column=0, sticky="w", padx=10, pady=5)
 
-                # Create a frame for output text with a white-to-gray gradient
                 frame_output = Frame(frame_image_label, bd=2, relief="groove", bg="#242424")
                 frame_output.grid(row=0, column=1, sticky="w", padx=10, pady=5)
 
                 label_heading = Label(frame_output, text=f"Species: {species}\nDisease: {disease}", bg="#242424", fg="white")
                 label_heading.grid(row=0, column=0, sticky="w", padx=5, pady=5)
 
-                label_image.img_tk = img_tk  # Save reference to prevent the image from being garbage collected
+                label_image.img_tk = img_tk 
 
-        # Update the canvas with images and labels
         update_images()
 
-        # Configure canvas scrolling
         frame.update_idletasks()
         canvas.configure(scrollregion=canvas.bbox("all"))
         
