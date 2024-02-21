@@ -50,7 +50,11 @@ Tree-AI/
 
 ## Credits
 Roshan Kumar Dubey: [LinkedIn](https://www.linkedin.com/in/roshan-kumar-dubey-620253260/)
+
 Rupali Mandawat: [LinkedIn](https://www.linkedin.com/in/rupali-mandawat-93b265255/)
+
 Sarthak Aggarwal: [LinkedIn](https://www.linkedin.com/in/sarthak-aggarwal-486b60240/)
+
 Sumit Kumar Sengar: [LinkedIn](https://www.linkedin.com/in/sumit-kumar-sengar-3a2245147/)
-Harshit:
+
+Harshit: [Image](https://i.pinimg.com/736x/fd/01/75/fd0175ef780e2feefb30055be9f2e022.jpg)
