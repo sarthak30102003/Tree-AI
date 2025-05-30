@@ -5,10 +5,11 @@ This project is designed to detect diseases in plants using machine learning tec
 ## Installation
 ### Clone the repository:
 
-> git clone https://github.com/sarthak30102003/Tree-AI.git
+`git clone https://github.com/sarthak30102003/Tree-AI.git`
 
 ### Install dependencies:
-> pip install -r requirements.txt
+
+`pip install -r requirements.txt`
 
 ## Usage
 ### Data Preparation:
@@ -18,14 +19,14 @@ This project is designed to detect diseases in plants using machine learning tec
 
 ### Training the Model:
 
-* Run the main.py script to train the CNN model on the provided dataset.
-> python main.py
+Run the main.py script to train the CNN model on the provided dataset.
+`python main.py`
 
 ### Launching the GUI:
 
 * Run the gui.py script to launch the graphical user interface (GUI) for real-time plant disease detection.
 
-> python gui.py
+`python gui.py`
 
 ## Directory Structure
 
@@ -56,5 +57,3 @@ Rupali Mandawat: [LinkedIn](https://www.linkedin.com/in/rupali-mandawat-93b26525
 Sarthak Aggarwal: [LinkedIn](https://www.linkedin.com/in/sarthak-aggarwal-486b60240/)
 
 Sumit Kumar Sengar: [LinkedIn](https://www.linkedin.com/in/sumit-kumar-sengar-3a2245147/)
-
-Harshit: [Image](https://i.pinimg.com/736x/fd/01/75/fd0175ef780e2feefb30055be9f2e022.jpg)
